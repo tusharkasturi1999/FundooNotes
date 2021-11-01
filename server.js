@@ -12,6 +12,7 @@ const db = require('./config/dbConnect')
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const app = express();
+var cors = require('cors')
 
 app.use(express.urlencoded({
     extended: false
@@ -19,8 +20,13 @@ app.use(express.urlencoded({
 
 app.use(express.json())
 
+var corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
+
 app.use('/notes',noteRouter)
-app.use('/user',userRouter)
+app.use('/user', cors(corsOptions),userRouter)
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 

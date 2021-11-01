@@ -3,13 +3,14 @@ const userController = require("../controllers/user/user.controller");
 const userRoute = express.Router();
 const userMiddleware = require("../middleware/user.middleware.js");
 const { body } = require("express-validator");
+var cors = require('cors')
 
 //User login
 userRoute.post("/login", userController.loginUser);
 
 // Create a new User
 userRoute.post(
-  "/",
+  "/", cors(),
   body("firstName")
     .matches("^[A-Z][a-zA-Z]{2,}")
     .withMessage(

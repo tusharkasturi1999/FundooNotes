@@ -14,7 +14,7 @@ class nodeMailer {
       from: process.env.admiMail,
       to: email,
       subject: "Sending Email using Node.js",
-      html: `<a>${token}</a>`,
+      html: `<a href = "http://localhost:4000/user/reset/${token}">Click Here to Reset Password</a>`,
       text: "password reset",
     };
 
