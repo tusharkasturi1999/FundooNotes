@@ -26,7 +26,8 @@ var corsOptions = {
   }
 
 app.use('/notes',noteRouter)
-app.use('/user', cors(corsOptions),userRouter)
+app.use('/user', cors(),userRouter)
+
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 

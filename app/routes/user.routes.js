@@ -10,7 +10,7 @@ userRoute.post("/login", userController.loginUser);
 
 // Create a new User
 userRoute.post(
-  "/", cors(),
+  "/", 
   body("firstName")
     .matches("^[A-Z][a-zA-Z]{2,}")
     .withMessage(

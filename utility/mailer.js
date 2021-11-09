@@ -14,14 +14,14 @@ class nodeMailer {
       from: process.env.admiMail,
       to: email,
       subject: "Sending Email using Node.js",
-      html: `<a href = "http://localhost:4000/user/reset/${token}">Click Here to Reset Password</a>`,
+      html: `<a href = "http://localhost:3000/user/reset/${token}">Click Here to Reset Password</a>`,
       text: "password reset",
     };
 
     return transporter
       .sendMail(mailOptions)
       .then((data) => {
-        return "Email sent successfully!!";
+        return "Recovery Mail Sent Successfully";
       })
       .catch((err) => {
         return err;

@@ -23,7 +23,7 @@ class userController {
       logger.info("login Successful");
       responseObject = dtoObject.userApiSuccess;
       responseObject.message = data;
-      res.send(responseObject);
+      return res.send(responseObject);
     });
   };
 
@@ -38,7 +38,7 @@ class userController {
     if (!errors.isEmpty()) {
       responseObject = dtoObject.userApiFailure;
       responseObject.message = errors.array();
-      res.send(responseObject);
+      return res.send(responseObject);
     }
     let body = req.body;
     userService.registerUser(body, (err, data) => {
@@ -46,12 +46,12 @@ class userController {
         logger.error(err);
         responseObject = dtoObject.userApiFailure;
         responseObject.message = err.message;
-        res.send(responseObject);
+        return res.send(responseObject);
       }
       logger.info("Registeration Successful");
       responseObject = dtoObject.userApiSuccess;
       responseObject.message = data;
-      res.send(responseObject);
+      return res.send(responseObject);
     });
   };
 
@@ -66,12 +66,12 @@ class userController {
         logger.error(err);
         responseObject = dtoObject.userApiFailure;
         responseObject.message = err.message;
-        res.send(responseObject);
+        return res.send(responseObject);
       }
       logger.info("Retrieval successfull");
       responseObject = dtoObject.userApiSuccess;
       responseObject.message = data;
-      res.send(responseObject);
+      return res.send(responseObject);
     });
   };
 
@@ -88,20 +88,20 @@ class userController {
         if (err.kind === "ObjectId") {
           responseObject = dtoObject.userApiFindFailure;
           responseObject.message = err.message;
-          res.send(responseObject);
+          return res.send(responseObject);
         }
         responseObject = dtoObject.userApiFailure;
         responseObject.message = err.message;
-        res.send(responseObject);
+        return res.send(responseObject);
       }
       if (!data) {
         responseObject = dtoObject.userApiFindFailure;
-        res.send(responseObject);
+        return res.send(responseObject);
       }
       logger.info("Retrieval Successful");
       responseObject = dtoObject.userApiSuccess;
       responseObject.message = data;
-      res.send(responseObject);
+      return res.send(responseObject);
     });
   };
 
@@ -131,12 +131,12 @@ class userController {
       }
       if (!data) {
         responseObject = dtoObject.userApiFindFailure;
-        res.send(responseObject);
+        return res.send(responseObject);
       }
       logger.info("Updated succesfully");
       responseObject = dtoObject.userApiSuccess;
       responseObject.message = "Updated Successfully";
-      res.send(responseObject);
+      return res.send(responseObject);
     });
   };
 
@@ -153,20 +153,20 @@ class userController {
         if (err.kind === "ObjectId") {
           responseObject = dtoObject.userApiFindFailure;
           responseObject.message = err.message;
-          res.send(responseObject);
+          return res.send(responseObject);
         }
         responseObject = dtoObject.userApiFailure;
         responseObject.message = err.message;
-        res.send(responseObject);
+        return res.send(responseObject);
       }
       if (!data) {
         responseObject = dtoObject.userApiFindFailure;
-        res.send(responseObject);
+        return res.send(responseObject);
       }
       logger.info("delete succesfully");
       responseObject = dtoObject.userApiSuccess;
       responseObject.message = "deleted successfully";
-      res.send(responseObject);
+      return res.send(responseObject);
     });
   };
   /**
@@ -179,10 +179,10 @@ class userController {
     userService
       .forgotPassword(email)
       .then((data) => {
-        res.send("Result:" + data);
+        return res.send(data);
       })
       .catch((err) => {
-        res.send(err);
+        return res.send(err);
       });
   };
   /**
@@ -196,11 +196,11 @@ class userController {
     userService
       .resetPassword(token,password)
       .then((data) => {
-        res.json({message:"Password updated successfully","Result:" :data});
+        return res.json({message:"Password updated successfully","Result:" :data});
       })
       .catch((err) => {
         console.log("error:" + err);
-        res.send(err);
+        return res.send(err);
       });
   };
 }
