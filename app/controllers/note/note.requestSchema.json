@@ -1,0 +1,55 @@
+{
+  "noteSchema": {
+    "noteCreateAPI": {
+      "url": "/notes",
+      "method": "POST",
+      "body": {
+        "title": "String",
+        "content": "String"
+      },
+      "headers": {
+        "content-type": "json/application",
+        "authorization": "Bearer 'token'"
+      }
+    },
+    "noteFindAllAPI": {
+      "url": "/notes",
+      "method": "GET",
+      "body": null,
+      "headers": {
+        "content-type": "json/application",
+        "authorization": "Bearer 'token'"
+      }
+    },
+    "noteFindOneAPI": {
+      "url": "/notes/:noteID",
+      "method": "GET",
+      "body": null,
+      "headers": {
+        "content-type": "json/application",
+        "authorization": "Bearer 'token'"
+      }
+    },
+    "noteUpdateAPI": {
+      "url": "/notes/:noteID",
+      "method": "PUT",
+      "body": {
+        "title": "String",
+        "content": "String"
+      },
+      "headers": {
+        "content-type": "json/application",
+        "authorization": "Bearer 'token'"
+      }
+    },
+    "noteDeleteAPI": {
+      "url": "/notes/:noteID",
+      "method":"DELETE",
+      "body": null,
+      "headers": {
+        "content-type": "json/application",
+        "authorization": "Bearer 'token'"
+      }
+    }
+  }
+}

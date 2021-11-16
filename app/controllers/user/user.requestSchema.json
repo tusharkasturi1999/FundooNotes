@@ -1,0 +1,93 @@
+{
+  "User schema": {
+    "userCreateAPI": {
+      "url": "/user",
+      "method": "POST",
+      "body": {
+        "firstName": "String",
+        "lastName": "String",
+        "age": "Number",
+        "Email": "String"
+      },
+      "headers": {
+        "content-type": "json/application",
+        "authorization": "Bearer 'token'"
+      }
+    },
+    "userFindAllAPI": {
+      "url": "/user",
+      "method": "GET",
+      "body": null,
+      "headers": {
+        "content-type": "json/application",
+        "authorization": "Bearer 'token'"
+      }
+    },
+    "userFindOneAPI": {
+      "url": "/user/:userID",
+      "method": "GET",
+      "body": null,
+      "headers": {
+        "content-type": "json/application",
+        "authorization": "Bearer 'token'"
+      }
+    },
+    "userUpdateAPI": {
+      "url": "/user/:userID",
+      "method": "PUT",
+      "body": {
+        "firstName": "String",
+        "lastName": "String",
+        "age": "Number",
+        "Email": "String"
+      },
+      "headers": {
+        "content-type": "json/application",
+        "authorization": "Bearer 'token'"
+      }
+    },
+    "userDeleteAPI": {
+      "url": "/user/:userID",
+      "method": "DELETE",
+      "body": null,
+      "headers": {
+        "content-type": "json/application",
+        "authorization": "Bearer 'token'"
+      }
+    },
+    "userLoginAPI": {
+      "url": "/user/login",
+      "method": "POST",
+      "body": {
+        "Email": "String",
+        "password": "String"
+      },
+      "headers": {
+        "content-type": "json/application",
+        "authorization": "Bearer 'token'"
+      }
+    },
+    "userForgotPasswordAPI": {
+      "url": "/user/forgot",
+      "method": "POST",
+      "body": {
+        "email": "String"
+      },
+      "headers": {
+        "content-type": "json/application",
+        "authorization": "Bearer 'token'"
+      }
+    },
+    "userResetPasswordAPI": {
+      "url": "/user/reset/:token",
+      "method": "POST",
+      "body": {
+        "password": "String"
+      },
+      "headers": {
+        "content-type": "json/application",
+        "authorization": "Bearer 'token'"
+      }
+    }
+  }
+}
