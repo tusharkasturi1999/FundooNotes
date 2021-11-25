@@ -4,6 +4,7 @@ const NoteSchema = mongoose.Schema(
     title: String,
     content: String,
     userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    isTrash:Boolean
   },
   {
     timestamps: true,
@@ -25,6 +26,7 @@ class noteModel {
       title: title,
       content: content,
       userId: userId,
+      isTrash:false
     });
     return note.save((err, data) => {
       return err ? callback(err, null) : callback(null, data);
@@ -76,11 +78,13 @@ class noteModel {
    * @returns err or data
    */
   updateNote = (userId, noteId, body, callback) => {
+    console.log(body);
     return myNote.findOneAndUpdate(
       { userId: userId, _id: noteId },
       {
         title: body.title,
         content: body.content,
+        isTrash:body.isTrash
       },
       { new: true },
       (error, data) => {

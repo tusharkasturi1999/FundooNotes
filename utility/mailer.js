@@ -6,7 +6,7 @@ class nodeMailer {
       service: "gmail",
       auth: {
         user: "kashtusk@gmail.com",
-        pass: process.env.password,
+        pass: process.env.adminPass,
       },
     });
 
@@ -14,14 +14,14 @@ class nodeMailer {
       from: "kashtusk@gmail.com",
       to: email,
       subject: "Sending Email using Node.js",
-      html: `<a href='http://localhost:3000/reset/${token}'>click here</a>`,
+      html: `<a href='http://localhost:3000/user/reset/${token}'>click here</a>`,
       text: "password reset",
     };
 
     return transporter
       .sendMail(mailOptions)
       .then((data) => {
-        return data;
+        return {data:data,msg:"Recovery email sent successfully"};
       })
       .catch((err) => {
         return err;
